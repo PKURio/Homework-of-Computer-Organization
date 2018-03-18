@@ -2,9 +2,9 @@
 upper_word:	.asciiz
 	"Alpha ","Bravo ","China ","Delta ","Echo ","Foxtrot ",
 	"Golf ","Hotel ","India ","Juliet ","Kilo ","Lima ",
-    "Mary ","November ","Oscar ","Paper ","Quebec ","Research ",
-    "Sierra ","Tango ","Uniform ","Victor ","Whisky ","X-ray ",
-    "Yankee ","Zulu "	
+	"Mary ","November ","Oscar ","Paper ","Quebec ","Research ",
+	"Sierra ","Tango ","Uniform ","Victor ","Whisky ","X-ray ",
+	"Yankee ","Zulu "	
 uw_offset:	.word
 	0,7,14,21,28,34,43,49,56,63,71,
 	77,83,89,99,106,113,121,131,
