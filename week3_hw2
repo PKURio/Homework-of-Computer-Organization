@@ -1,0 +1,60 @@
+	.data
+success:	.asciiz "Success! Location:"
+fail:		.asciiz "Fail!\r\n"
+end: 		.asciiz "\r\n"
+buf: 		.space 100
+	.text
+main:	
+	la $a0, buf
+	la $a1, 100
+	li $v0, 8
+	syscall # read string
+
+loop:	
+	li $v0, 12 
+	syscall # read character
+	move $s0, $v0
+	subi $t0, $s0, '?'
+	beqz $t0, exit
+	la $s1, buf
+	j find
+
+find: 	
+	lb $t0, ($s1)
+	beqz $t0, printfail
+	sub $t0, $t0, $s0
+	beqz $t0, printsuccess
+	addi $s1, $s1, 1
+	j find
+
+printsuccess:
+	la $a0, end
+	li $v0, 4
+	syscall # print \r\n
+	la $a0, success
+	li $v0, 4
+	syscall # print string
+	la $t0, buf
+	sub $t0, $s1, $t0
+	addi $t0, $t0, 1
+	move $a0, $t0 
+	li $v0, 1
+	syscall # print location
+	la $a0, end
+	li $v0, 4
+	syscall # print \r\n
+	j loop
+	
+printfail:
+	la $a0, end
+	li $v0, 4
+	syscall # print \r\n
+	la $a0, fail
+	li $v0, 4
+	syscall # print "Fail!\r\n"
+	j loop
+	
+exit:	
+	li $v0, 10
+	syscall # exit
+	
