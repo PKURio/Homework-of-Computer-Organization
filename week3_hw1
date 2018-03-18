@@ -9,7 +9,7 @@ uw_offset:	.word
 	0,7,14,21,28,34,43,49,56,63,71,
 	77,83,89,99,106,113,121,131,
 	139,146,155,163,171,178,186
-	# there is \n after the string when using "asciiz"
+	# there is \0 after the string when using "asciiz"
 lower_word:	.asciiz
 	"alpha ","bravo ","china ","delta ","echo ","foxtrot ",
 	"golf ","hotel ","india ","juliet ","kilo ","lima ",
